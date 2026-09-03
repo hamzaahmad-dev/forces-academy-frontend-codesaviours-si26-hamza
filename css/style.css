@@ -4,6 +4,16 @@
 
 
 /* ========================================
+   STICKY FOOTER LAYOUT
+   ======================================== */
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========================================
    NAVIGATION BAR
    ======================================== */
 
@@ -104,4 +114,49 @@
     #hero .btn {
         width: 100%;
     }
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+#mainFooter {
+    margin-top: auto;
+    background-color: #0a1f44;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+#mainFooter h5 {
+    color: #ffffff;
+}
+
+#mainFooter a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+#mainFooter a:hover {
+    color: #ffc107;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    font-size: 1.1rem;
+}
+
+.social-link:hover {
+    border-color: #ffc107;
+    color: #ffc107 !important;
+}
+
+.footer-bottom {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
