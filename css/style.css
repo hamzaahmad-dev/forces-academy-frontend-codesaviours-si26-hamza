@@ -1,11 +1,7 @@
-/* ========================================
-   FORCES ACADEMY - CUSTOM STYLES
-   ======================================== */
+/* FORCES ACADEMY - CUSTOM STYLES */
 
 
-/* ========================================
-   STICKY FOOTER LAYOUT
-   ======================================== */
+/* STICKY FOOTER LAYOUT */
 
 body {
     min-height: 100vh;
@@ -13,9 +9,8 @@ body {
     flex-direction: column;
 }
 
-/* ========================================
-   NAVIGATION BAR
-   ======================================== */
+
+/* NAVIGATION BAR */
 
 #mainNav {
     background-color: #0a1f44;
@@ -48,9 +43,7 @@ body {
 }
 
 
-/* ========================================
-   HERO SECTION
-   ======================================== */
+/* HERO SECTION */
 
 #hero {
     background: linear-gradient(135deg, #0a1f44 0%, #1a4a6b 100%);
@@ -67,9 +60,7 @@ body {
 }
 
 
-/* ========================================
-   HERO BUTTONS
-   ======================================== */
+/* HERO BUTTONS */
 
 #hero .btn-warning {
     transition: all 0.2s ease;
@@ -88,9 +79,7 @@ body {
 }
 
 
-/* ========================================
-   RESPONSIVE HERO
-   ======================================== */
+/* RESPONSIVE HERO */
 
 @media (max-width: 767.98px) {
 
@@ -116,9 +105,36 @@ body {
     }
 }
 
-/* ========================================
-   FOOTER
-   ======================================== */
+
+/* STATS SECTION */
+
+#stats {
+    background-color: #f8f9fa;
+}
+
+.stats-card {
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stats-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.stats-card h2 {
+    color: #0a1f44;
+}
+
+.stats-card p {
+    color: #495057;
+    font-weight: 500;
+}
+
+
+/* FOOTER */
 
 #mainFooter {
     margin-top: auto;

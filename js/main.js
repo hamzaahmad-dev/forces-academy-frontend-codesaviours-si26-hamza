@@ -10,37 +10,37 @@ const galleryItems = document.querySelectorAll(".gallery-item");
 filterButtons.forEach(function (button) {
 
 
-button.addEventListener("click", function () {
+    button.addEventListener("click", function () {
 
-    const filter = button.getAttribute("data-filter");
+        const filter = button.getAttribute("data-filter");
 
 
-    // Update active button
-    filterButtons.forEach(function (btn) {
-        btn.classList.remove("active");
-        btn.classList.remove("btn-warning");
-        btn.classList.add("btn-outline-dark");
+        // Update active button
+        filterButtons.forEach(function (btn) {
+            btn.classList.remove("active");
+            btn.classList.remove("btn-warning");
+            btn.classList.add("btn-outline-dark");
+        });
+
+        button.classList.add("active");
+        button.classList.remove("btn-outline-dark");
+        button.classList.add("btn-warning");
+
+
+        // Filter gallery items
+        galleryItems.forEach(function (item) {
+
+            const category = item.getAttribute("data-category");
+
+            if (filter === "all" || category === filter) {
+                item.style.display = "";
+            } else {
+                item.style.display = "none";
+            }
+
+        });
+
     });
-
-    button.classList.add("active");
-    button.classList.remove("btn-outline-dark");
-    button.classList.add("btn-warning");
-
-
-    // Filter gallery items
-    galleryItems.forEach(function (item) {
-
-        const category = item.getAttribute("data-category");
-
-        if (filter === "all" || category === filter) {
-            item.style.display = "";
-        } else {
-            item.style.display = "none";
-        }
-
-    });
-
-});
 
 });
 
@@ -49,78 +49,130 @@ const contactForm = document.getElementById("contactForm");
 
 if (contactForm) {
 
-contactForm.addEventListener("submit", function (event) {
+    contactForm.addEventListener("submit", function (event) {
 
-    event.preventDefault();
-
-
-    // Get form fields
-    const name = document.getElementById("name");
-    const email = document.getElementById("email");
-    const phone = document.getElementById("phone");
-    const subject = document.getElementById("subject");
-    const message = document.getElementById("message");
+        event.preventDefault();
 
 
-    // Email validation pattern
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        // Get form fields
+        const name = document.getElementById("name");
+        const email = document.getElementById("email");
+        const phone = document.getElementById("phone");
+        const subject = document.getElementById("subject");
+        const message = document.getElementById("message");
 
 
-    // Reset validation
-    name.classList.remove("is-invalid");
-    email.classList.remove("is-invalid");
-    phone.classList.remove("is-invalid");
-    subject.classList.remove("is-invalid");
-    message.classList.remove("is-invalid");
+        // Email validation pattern
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
-    let isValid = true;
+        // Reset validation
+        name.classList.remove("is-invalid");
+        email.classList.remove("is-invalid");
+        phone.classList.remove("is-invalid");
+        subject.classList.remove("is-invalid");
+        message.classList.remove("is-invalid");
 
 
-    // Name validation
-    if (name.value.trim() === "") {
-        name.classList.add("is-invalid");
-        isValid = false;
-    }
+        let isValid = true;
 
 
-    // Email validation
-    if (email.value.trim() === "" || !emailPattern.test(email.value.trim())) {
-        email.classList.add("is-invalid");
-        isValid = false;
-    }
+        // Name validation
+        if (name.value.trim() === "") {
+            name.classList.add("is-invalid");
+            isValid = false;
+        }
 
 
-    // Phone validation
-    if (phone.value.trim() === "") {
-        phone.classList.add("is-invalid");
-        isValid = false;
-    }
+        // Email validation
+        if (email.value.trim() === "" || !emailPattern.test(email.value.trim())) {
+            email.classList.add("is-invalid");
+            isValid = false;
+        }
 
 
-    // Subject validation
-    if (subject.value.trim() === "") {
-        subject.classList.add("is-invalid");
-        isValid = false;
-    }
+        // Phone validation
+        if (phone.value.trim() === "") {
+            phone.classList.add("is-invalid");
+            isValid = false;
+        }
 
 
-    // Message validation
-    if (message.value.trim() === "") {
-        message.classList.add("is-invalid");
-        isValid = false;
-    }
+        // Subject validation
+        if (subject.value.trim() === "") {
+            subject.classList.add("is-invalid");
+            isValid = false;
+        }
 
 
-    // If all fields are valid
-    if (isValid) {
+        // Message validation
+        if (message.value.trim() === "") {
+            message.classList.add("is-invalid");
+            isValid = false;
+        }
 
-        alert("Thank you! Your message has been submitted successfully.");
 
-        contactForm.reset();
+        // If all fields are valid
+        if (isValid) {
 
-    }
+            alert("Thank you! Your message has been submitted successfully.");
 
-});
+            contactForm.reset();
 
+        }
+
+    });
+
+}
+
+// ANIMATED STATS COUNTER
+
+const statsSection = document.getElementById("stats");
+const counters = document.querySelectorAll(".counter");
+
+if (statsSection && counters.length > 0) {
+
+    const observer = new IntersectionObserver(function (entries, observer) {
+
+        entries.forEach(function (entry) {
+
+            if (entry.isIntersecting) {
+
+                counters.forEach(function (counter) {
+
+                    const target = Number(counter.getAttribute("data-target"));
+                    const duration = 2000;
+                    const startTime = performance.now();
+
+                    function updateCounter(currentTime) {
+
+                        const elapsedTime = currentTime - startTime;
+                        const progress = Math.min(elapsedTime / duration, 1);
+
+                        const currentValue = Math.floor(progress * target);
+
+                        counter.textContent = currentValue.toLocaleString();
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target.toLocaleString();
+                        }
+
+                    }
+
+                    requestAnimationFrame(updateCounter);
+
+                });
+
+                observer.unobserve(statsSection);
+            }
+
+        });
+
+    }, {
+        threshold: 0.3
+    });
+
+    observer.observe(statsSection);
 }
