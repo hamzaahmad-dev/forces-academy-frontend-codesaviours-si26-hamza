@@ -134,45 +134,76 @@ body {
 }
 
 
-/* FOOTER */
 
-#mainFooter {
-    margin-top: auto;
-    background-color: #0a1f44;
-    color: rgba(255, 255, 255, 0.85);
-}
+/* TESTIMONIALS */
 
-#mainFooter h5 {
-    color: #ffffff;
-}
-
-#mainFooter a {
-    color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-#mainFooter a:hover {
-    color: #ffc107;
-}
-
-.social-link {
-    display: inline-flex;
+.testimonial-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 42px;
-    height: 42px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 2.5rem;
+    color: #6c757d;
+}
+
+/* TESTIMONIAL CAROUSEL CONTROLS */
+
+#testimonialCarousel .carousel-control-prev,
+#testimonialCarousel .carousel-control-next {
+    width: 8%;
+}
+
+#testimonialCarousel .carousel-control-prev-icon,
+#testimonialCarousel .carousel-control-next-icon {
+    background-color: #0a1f44;
     border-radius: 50%;
-    font-size: 1.1rem;
+    width: 45px;
+    height: 45px;
+    background-size: 55%;
 }
 
-.social-link:hover {
-    border-color: #ffc107;
-    color: #ffc107 !important;
-}
-
-.footer-bottom {
-    background-color: rgba(0, 0, 0, 0.2);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
+    /* FOOTER */
+    
+    #mainFooter {
+        margin-top: auto;
+        background-color: #0a1f44;
+        color: rgba(255, 255, 255, 0.85);
+    }
+    
+    #mainFooter h5 {
+        color: #ffffff;
+    }
+    
+    #mainFooter a {
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+    
+    #mainFooter a:hover {
+        color: #ffc107;
+    }
+    
+    .social-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        font-size: 1.1rem;
+    }
+    
+    .social-link:hover {
+        border-color: #ffc107;
+        color: #ffc107 !important;
+    }
+    
+    .footer-bottom {
+        background-color: rgba(0, 0, 0, 0.2);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
